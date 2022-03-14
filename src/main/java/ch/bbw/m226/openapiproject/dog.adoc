@@ -1,0 +1,30 @@
+== Hundeschule
+
+[plantuml]
+----
+@startuml
+
+
+class Herrchen {
+    + name
+    + dog: Hund
+}
+
+class Hund {
+    + leashStyle
+    + breed
+    + owner: Herrchen
+    + food
+    + dogSchool: Hundeschule
+    setOwner()
+}
+
+class Hundeschule {
+    + location
+}
+
+Hund::owner -> Herrchen::dog
+Hund::dogSchool -> Hundeschule::location
+
+@enduml
+
