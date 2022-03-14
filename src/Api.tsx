@@ -4,15 +4,19 @@ import { DefaultApi, PonyDto } from "./generated/openapi";
 
 const api = new DefaultApi();
 
-export function getPonies(): Promise<Array<PonyDto>> {
-    return api.getPonies()
+export function getDogs(): Promise<Array<PonyDto>> {
+    return api.getDogs()
 }
 
-export function addPony(name: string, birthday: Date): Promise<PonyDto> {
+export function addDog(leashStyle: string, breed: string, owner: Owner, food: string, dogschool: Dogschool): Promise<Array<PonyDto>> {
     return api.addPony({
-        ponyDto: {
-            name: name,
-            birthday: birthday
+        DogDTO: {
+            leashStyle: leashStyle,
+            breed: breed,
+            owner: owner,
+            food: food,
+            dogschool: dogschool
+
         }
     });
 }

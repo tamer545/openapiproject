@@ -1,15 +1,15 @@
 openapi: "3.0.3"
 info:
   version: 0.0.1
-  title: Ponyhof API
+  title: Doggoschool API
   description: A small sample API to grasp the basics of the OpenAPI Specification
 servers:
   - url: http://localhost:8080/api
 paths:
   /ponies:
     get:
-      summary: List all ponies
-      operationId: getPonies
+      summary: List all doggos
+      operationId: getDogs
       parameters:
         - name: limit
           in: query
@@ -26,40 +26,56 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/PonyDto"
+                  $ref: "#/components/schemas/DogDTO"
     post:
-      summary: introduce a new pony to the flock
-      operationId: addPony
+      summary: introduce a new doggo to the doggos
+      operationId: addDog
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PonyDto"
+              $ref: "#/components/schemas/DogDTO"
       responses:
         201:
-          description: added the pony
+          description: added the doggo
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/PonyDto"
+                $ref: "#/components/schemas/DogDTO"
 components:
   schemas:
-    PonyDto:
+    DogDTO:
       required:
-        - name
-        - birthday
+        - leashStyle
+        - breed
+        - owner
+        - food
+        - dogschool
       properties:
         id:
           type: integer
           example: 42
           minimum: 0
           readOnly: true
-        name:
+        leashStyle:
           type: string
           minLength: 1
-          example: Thunder
-        birthday:
+          example: leather
+        breed:
           type: string
-          format: date
-          example: 2021-01-31
+          minLength: 1
+          example: Golden Retriever
+        owner:
+          type: owner
+          minLength: 1
+          example: Kristoffer Jonas Klauß
+        food:
+          type: string
+          minLength: 1
+          example: t-bone Steak
+        dogschool:
+          type: dogschool
+          minLength: 1
+          example: Dogschool Zurich
+
