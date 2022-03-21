@@ -47,7 +47,7 @@ components:
   schemas:
     DogDTO:
       required:
-        - leashStyle
+        - name
         - breed
         - owner
         - food
@@ -58,10 +58,10 @@ components:
           example: 42
           minimum: 0
           readOnly: true
-        leashStyle:
+        name:
           type: string
           minLength: 1
-          example: leather
+          example: Kira
         breed:
           type: string
           minLength: 1

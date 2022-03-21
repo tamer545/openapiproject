@@ -1,17 +1,17 @@
 // Note: we work mainly with JavaScript.
 // However, at least this file is in Typescript to illustrate the point of the typesafe APIs.
-import { DefaultApi, PonyDto } from "./generated/openapi";
+import {DefaultApi, DogDTO} from "./generated/openapi";
 
 const api = new DefaultApi();
 
-export function getDogs(): Promise<Array<PonyDto>> {
+export function getDogs(): Promise<Array<DogDTO>> {
     return api.getDogs()
 }
 
-export function addDog(leashStyle: string, breed: string, owner: Owner, food: string, dogschool: Dogschool): Promise<Array<PonyDto>> {
-    return api.addPony({
+export function addDog(name: string, breed: string, owner: Owner, food: string, dogschool: Dogschool): Promise<DogDTO> {
+    return api.addDog({
         DogDTO: {
-            leashStyle: leashStyle,
+            name: name,
             breed: breed,
             owner: owner,
             food: food,
