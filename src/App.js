@@ -1,4 +1,4 @@
-import {Button, Container, Form, Image, Navbar, Table} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, Image, Navbar, Row, Table} from "react-bootstrap";
 import logo from './logo.jpg'
 import {useEffect, useState} from "react";
 import {addDog, getDogs} from "./Api";
@@ -13,14 +13,22 @@ function DogTBody({versionId}) {
     return (
         <tbody>
         {dogs.map(dogDto => {
-            return <tr key={dogDto.id}>
-                <td>{dogDto.name}</td>
-                <td>{dogDto.breed}</td>
-                <td>{dogDto.owner}</td>
-                <td>{dogDto.food}</td>
-                <td>{dogDto.dogschool}</td>
-                <td>{dogDto.id}</td>
-            </tr>
+            return (
+                <Col>
+                <Card key={dogDto.id}>
+                    <Card.Title>{dogDto.name}</Card.Title>
+                    <Card.Body>
+                        {dogDto.breed}
+                        {dogDto.owner}
+                        {dogDto.food}
+                        {dogDto.dogschool}
+                    </Card.Body>
+                    <Card.Footer>
+                        {dogDto.id}
+                    </Card.Footer>
+                </Card>
+                </Col>
+            )
         })}
         </tbody>
     )
@@ -43,26 +51,28 @@ function NewDogTFoot({onUpdate}) {
         <tr>
             <td>
                 <Form.Label className="visually-hidden" htmlFor="inputDogName">Dogname</Form.Label>
-                <Form.Control id="inputDogName" placeholder="Kira" value={newName} onChange={e => setNewName(e.target.value)} />
+                <Form.Control id="inputDogName" placeholder="Kira" value={newName}
+                              onChange={e => setNewName(e.target.value)}/>
             </td>
             <td>
                 <Form.Label className="visually-hidden" htmlFor="inputDogBreed">Breed</Form.Label>
                 <Form.Control id="inputDogBreed" placeholder="Golden Retriever" value={newBreed}
-                              onChange={e => setNewBreed(e.target.value)} />
+                              onChange={e => setNewBreed(e.target.value)}/>
             </td>
             <td>
                 <Form.Label className="visually-hidden" htmlFor="inputDogOwner">Owner</Form.Label>
-                <Form.Control id="inputDogOwner" placeholder="Kai Bria" value={newOwner} onChange={e => setNewOwner(e.target.value)} />
+                <Form.Control id="inputDogOwner" placeholder="Kai Bria" value={newOwner}
+                              onChange={e => setNewOwner(e.target.value)}/>
             </td>
             <td>
                 <Form.Label className="visually-hidden" htmlFor="inputDogFood">Futter</Form.Label>
                 <Form.Control id="inputDogFood" placeholder="Meat" value={newFood}
-                              onChange={e => setNewFood(e.target.value)} />
+                              onChange={e => setNewFood(e.target.value)}/>
             </td>
             <td>
                 <Form.Label className="visually-hidden" htmlFor="inputDogSchool">DogSchool</Form.Label>
                 <Form.Control id="inputDogSchool" placeholder="Hunde Schule Neuhausen" value={newDogSchool}
-                              onChange={e => setNewDogSchool(e.target.value)} />
+                              onChange={e => setNewDogSchool(e.target.value)}/>
             </td>
             <td>
                 <Button type="submit" variant="secondary" onClick={handleAddDog}>Add Dog</Button>
@@ -78,20 +88,12 @@ function DogTable() {
         setId(id + 1);
     }
     return (
-        <Table striped hover>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Breed</th>
-                <th>Food</th>
-                <th>Owner</th>
-                <th>DogSchool</th>
-                <th>ID</th>
-            </tr>
-            </thead>
-            <DogTBody versionId={id} />
-            <NewDogTFoot onUpdate={onUpdate} />
-        </Table>
+        <>
+            <NewDogTFoot onUpdate={onUpdate}/>
+            <Row>
+            <DogTBody versionId={id}/>
+            </Row>
+        </>
     )
 }
 
@@ -101,7 +103,7 @@ function App() {
             <Navbar bg="light">
                 <Container>
                     <Navbar.Brand>
-                        <Image src={logo} alt="" width={60} height={60} />{' '}
+                        <Image src={logo} alt="" width={60} height={60}/>{' '}
                         Hunde Schule
                     </Navbar.Brand>
                     <Navbar.Text>
@@ -110,7 +112,7 @@ function App() {
                 </Container>
             </Navbar>
             <Container>
-                <DogTable />
+                <DogTable/>
             </Container>
         </>
     );
