@@ -1,5 +1,5 @@
 import {Button, Container, Form, Image, Navbar, Table} from "react-bootstrap";
-import logo from './logo.png'
+import logo from './logo.jpg'
 import {useEffect, useState} from "react";
 import {addDog, getDogs} from "./Api";
 
@@ -101,7 +101,8 @@ function App() {
             <Navbar bg="light">
                 <Container>
                     <Navbar.Brand>
-                        Hundeschule
+                        <Image src={logo} alt="" width={60} height={60} />{' '}
+                        Hunde Schule
                     </Navbar.Brand>
                     <Navbar.Text>
                         <a href="http://localhost:8080/api/swagger-ui/index.html">API {">>"}</a>

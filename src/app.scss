@@ -1,10 +1,10 @@
 // https://getbootstrap.com/docs/5.1/customize/sass/
 
 $body-bg: #fce4ec;
-$primary: #f06292;
-$secondary: #512da8;
-$light: #ff94c2;
-$table-striped-bg: #ff94c2;
-$table-hover-bg: #f06292;
+$primary: rgb(200, 100, 100);
+$secondary: rgb(100, 100, 100);
+$light: rgb(100, 100, 200);
+$table-striped-bg: rgb(100, 200, 100);
+$table-hover-bg: rgb(200, 200, 150);
 
 @import "bootstrap";
