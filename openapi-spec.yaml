@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:8080/api
 paths:
-  /ponies:
+  /dogs:
     get:
       summary: List all doggos
       operationId: getDogs
@@ -67,7 +67,7 @@ components:
           minLength: 1
           example: Golden Retriever
         owner:
-          type: owner
+          type: string
           minLength: 1
           example: Kristoffer Jonas Klauß
         food:
@@ -75,7 +75,7 @@ components:
           minLength: 1
           example: t-bone Steak
         dogschool:
-          type: dogschool
+          type: string
           minLength: 1
           example: Dogschool Zurich
 

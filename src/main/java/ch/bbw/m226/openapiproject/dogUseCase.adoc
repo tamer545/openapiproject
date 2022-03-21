@@ -1,0 +1,30 @@
+
+= Hundeschule
+:doctype: article
+
+.Usecasediagram von der Hundeschule
+[plantuml]
+----
+@startuml
+left to right direction
+
+rectangle Hundschuol {
+    usecase "hundewechsel" as UC1
+}
+
+Owner --> UC1 : UC1
+@enduml
+----
+== UC-1 Reiterwchsel
+Ich will den primräen Reiter eines
+
+[plantuml]
+----
+@startuml
+actor user
+user -> backend : GET /api/ponies
+user <- backend : 200 List<PonyDto>
+note left: ahh now I\n know the pony id
+
+@enduml
+----

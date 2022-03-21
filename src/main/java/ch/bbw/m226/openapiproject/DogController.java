@@ -1,6 +1,5 @@
 package ch.bbw.m226.openapiproject;
 
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +23,7 @@ public class DogController implements DogsApi {
     private final Random random = new Random();
 
     @PostConstruct
-    public void someInitialHorses() {
+    public void someInitialDogs() {
         addDog(new DogDTO().breed("Golden Retriever"));
         addDog(new DogDTO().name("Tobi"));
         addDog(new DogDTO().name("Kira").breed("Bernersenn"));

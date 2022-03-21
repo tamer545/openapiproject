@@ -8,9 +8,9 @@ export function getDogs(): Promise<Array<DogDTO>> {
     return api.getDogs()
 }
 
-export function addDog(name: string, breed: string, owner: Owner, food: string, dogschool: Dogschool): Promise<DogDTO> {
+export function addDog(name: string, breed: string, owner: string, food: string, dogschool: string): Promise<DogDTO> {
     return api.addDog({
-        DogDTO: {
+        dogDTO: {
             name: name,
             breed: breed,
             owner: owner,

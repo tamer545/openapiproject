@@ -1,34 +1,40 @@
 import {Button, Container, Form, Image, Navbar, Table} from "react-bootstrap";
 import logo from './logo.png'
 import {useEffect, useState} from "react";
-import {getPonies, addPony} from "./Api";
+import {addDog, getDogs} from "./Api";
 
-function PonyTBody({versionId}) {
-    const [ponies, setPonies] = useState([])
+function DogTBody({versionId}) {
+    const [dogs, setDogs] = useState([])
     useEffect(() => {
-        getPonies()
-            .then(data => setPonies(data))
+        getDogs()
+            .then(data => setDogs(data))
             .catch(error => console.error(error));
     }, [versionId])
     return (
         <tbody>
-        {ponies.map(ponyDto => {
-            return <tr key={ponyDto.id}>
-                <td>{ponyDto.name}</td>
-                <td>{ponyDto.birthday.toISOString().split("T")[0]}</td>
-                <td>{ponyDto.id}</td>
+        {dogs.map(dogDto => {
+            return <tr key={dogDto.id}>
+                <td>{dogDto.name}</td>
+                <td>{dogDto.breed}</td>
+                <td>{dogDto.owner}</td>
+                <td>{dogDto.food}</td>
+                <td>{dogDto.dogschool}</td>
+                <td>{dogDto.id}</td>
             </tr>
         })}
         </tbody>
     )
 }
 
-function NewPonyTFoot({onUpdate}) {
+function NewDogTFoot({onUpdate}) {
     const [newName, setNewName] = useState("")
-    const [newBirthday, setNewBirthday] = useState("")
-    const handleAddPony = event => {
+    const [newBreed, setNewBreed] = useState("")
+    const [newOwner, setNewOwner] = useState("")
+    const [newFood, setNewFood] = useState("")
+    const [newDogSchool, setNewDogSchool] = useState("")
+    const handleAddDog = event => {
         event.preventDefault();
-        addPony(newName, newBirthday)
+        addDog(newName, newBreed, newFood, newOwner, newDogSchool)
             .then(() => onUpdate())
             .catch(error => console.error(error));
     }
@@ -36,23 +42,37 @@ function NewPonyTFoot({onUpdate}) {
         <tfoot>
         <tr>
             <td>
-                <Form.Label className="visually-hidden" htmlFor="inputPonyName">Ponyname</Form.Label>
-                <Form.Control id="inputPonyName" placeholder="Dixie" value={newName} onChange={e => setNewName(e.target.value)} />
+                <Form.Label className="visually-hidden" htmlFor="inputDogName">Dogname</Form.Label>
+                <Form.Control id="inputDogName" placeholder="Kira" value={newName} onChange={e => setNewName(e.target.value)} />
             </td>
             <td>
-                <Form.Label className="visually-hidden" htmlFor="inputPonyBirthday">Birthday</Form.Label>
-                <Form.Control id="inputPonyBirthday" placeholder="2000-01-31" value={newBirthday}
-                              onChange={e => setNewBirthday(e.target.value)} />
+                <Form.Label className="visually-hidden" htmlFor="inputDogBreed">Breed</Form.Label>
+                <Form.Control id="inputDogBreed" placeholder="Golden Retriever" value={newBreed}
+                              onChange={e => setNewBreed(e.target.value)} />
             </td>
             <td>
-                <Button type="submit" variant="secondary" onClick={handleAddPony}>Add Pony</Button>
+                <Form.Label className="visually-hidden" htmlFor="inputDogOwner">Owner</Form.Label>
+                <Form.Control id="inputDogOwner" placeholder="Kai Bria" value={newOwner} onChange={e => setNewOwner(e.target.value)} />
+            </td>
+            <td>
+                <Form.Label className="visually-hidden" htmlFor="inputDogFood">Breed</Form.Label>
+                <Form.Control id="inputDogFood" placeholder="Meat" value={newFood}
+                              onChange={e => setNewFood(e.target.value)} />
+            </td>
+            <td>
+                <Form.Label className="visually-hidden" htmlFor="inputDogSchool">DogSchool</Form.Label>
+                <Form.Control id="inputDogSchool" placeholder="Hunde Schule Neuhausen" value={newDogSchool}
+                              onChange={e => setNewDogSchool(e.target.value)} />
+            </td>
+            <td>
+                <Button type="submit" variant="secondary" onClick={handleAddDog}>Add Pony</Button>
             </td>
         </tr>
         </tfoot>
     )
 }
 
-function PonyTable() {
+function DogTable() {
     const [id, setId] = useState(0)
     const onUpdate = () => {
         setId(id + 1);
@@ -62,12 +82,15 @@ function PonyTable() {
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Birthday</th>
+                <th>Breed</th>
+                <th>Owner</th>
+                <th>Food</th>
+                <th>DogSchool</th>
                 <th>ID</th>
             </tr>
             </thead>
-            <PonyTBody versionId={id} />
-            <NewPonyTFoot onUpdate={onUpdate} />
+            <DogTBody versionId={id} />
+            <NewDogTFoot onUpdate={onUpdate} />
         </Table>
     )
 }
@@ -78,8 +101,7 @@ function App() {
             <Navbar bg="light">
                 <Container>
                     <Navbar.Brand>
-                        <Image src={logo} alt="" width={48} height={48} />{' '}
-                        Ponyhof
+                        Hundeschule
                     </Navbar.Brand>
                     <Navbar.Text>
                         <a href="http://localhost:8080/api/swagger-ui/index.html">API {">>"}</a>
@@ -87,7 +109,7 @@ function App() {
                 </Container>
             </Navbar>
             <Container>
-                <PonyTable />
+                <DogTable />
             </Container>
         </>
     );
