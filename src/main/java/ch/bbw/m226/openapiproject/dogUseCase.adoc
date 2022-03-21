@@ -8,23 +8,23 @@
 @startuml
 left to right direction
 
-rectangle Hundschuol {
-    usecase "hundewechsel" as UC1
+rectangle HundeSchule {
+    usecase "ownerwechsel" as UC1
 }
 
-Owner --> UC1 : UC1
+Hund --> UC1 : UC1
 @enduml
 ----
-== UC-1 Reiterwchsel
-Ich will den primräen Reiter eines
+== UC-1 Owner wechsel
+Ich will den primären Besitzer eines Hundes wechseln
 
 [plantuml]
 ----
 @startuml
 actor user
-user -> backend : GET /api/ponies
-user <- backend : 200 List<PonyDto>
-note left: ahh now I\n know the pony id
+user -> backend : GET /api/dogs
+user <- backend : 200 List<DogDTO>
+note left: ahh now I\n know the dog id
 
 @enduml
 ----

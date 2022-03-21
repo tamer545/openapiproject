@@ -55,7 +55,7 @@ function NewDogTFoot({onUpdate}) {
                 <Form.Control id="inputDogOwner" placeholder="Kai Bria" value={newOwner} onChange={e => setNewOwner(e.target.value)} />
             </td>
             <td>
-                <Form.Label className="visually-hidden" htmlFor="inputDogFood">Breed</Form.Label>
+                <Form.Label className="visually-hidden" htmlFor="inputDogFood">Futter</Form.Label>
                 <Form.Control id="inputDogFood" placeholder="Meat" value={newFood}
                               onChange={e => setNewFood(e.target.value)} />
             </td>
