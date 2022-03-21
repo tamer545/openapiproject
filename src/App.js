@@ -65,7 +65,7 @@ function NewDogTFoot({onUpdate}) {
                               onChange={e => setNewDogSchool(e.target.value)} />
             </td>
             <td>
-                <Button type="submit" variant="secondary" onClick={handleAddDog}>Add Pony</Button>
+                <Button type="submit" variant="secondary" onClick={handleAddDog}>Add Dog</Button>
             </td>
         </tr>
         </tfoot>
@@ -83,8 +83,8 @@ function DogTable() {
             <tr>
                 <th>Name</th>
                 <th>Breed</th>
-                <th>Owner</th>
                 <th>Food</th>
+                <th>Owner</th>
                 <th>DogSchool</th>
                 <th>ID</th>
             </tr>
