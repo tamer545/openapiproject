@@ -11,11 +11,11 @@ class Herrchen {
 }
 
 class Hund {
-    + leashStyle
+    + name
     + breed
-    + owner: Herrchen
+    + owner
     + food
-    + dogSchool: Hundeschule
+    + dogSchool
     setOwner()
 }
 

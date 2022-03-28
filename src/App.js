@@ -16,16 +16,19 @@ function DogTBody({versionId}) {
             <Row>
         {dogs.map(dogDto => {
             return (
-                <Card key={dogDto.id} style={{ width: '14rem' , margin: '20px'}}>
+                <Card key={dogDto.id} style={{background: "#876942", width: '14rem' , margin: '20px'}}>
                     <Card.Title><h4>{dogDto.name}</h4></Card.Title>
                     <Card.Body>
                         <h6>Rasse:</h6>
                         {dogDto.breed}
                         <br/>
+                        <h6>Besitzer:</h6>
                         {dogDto.owner}
                         <br/>
+                        <h6>Hauptnahrung:</h6>
                         {dogDto.food}
                         <br/>
+                        <h6>Schule:</h6>
                         {dogDto.dogschool}
                     </Card.Body>
                     <Card.Footer>
