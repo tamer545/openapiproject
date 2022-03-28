@@ -52,7 +52,7 @@ function NewDogTFoot({onUpdate}) {
     const [newDogSchool, setNewDogSchool] = useState("")
     const handleAddDog = event => {
         event.preventDefault();
-        addDog(newName, newBreed, newFood, newOwner, newDogSchool)
+        addDog(newName, newBreed, newOwner, newFood, newDogSchool)
             .then(() => onUpdate())
             .catch(error => console.error(error));
     }
