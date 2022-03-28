@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 import javax.annotation.PostConstruct;
 
+
 import ch.bbw.m226.openapi.generated.controller.DogsApi;
 import ch.bbw.m226.openapi.generated.dto.DogDTO;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,7 @@ public class DogController implements DogsApi {
         addDog(new DogDTO().name("Tobi"));
         addDog(new DogDTO().name("Kira").breed("Bernersenn"));
     }
+
 
     @Override
     public ResponseEntity<DogDTO> addDog(DogDTO newDog) {

@@ -12,24 +12,31 @@ function DogTBody({versionId}) {
     }, [versionId])
     return (
         <tbody>
+        <Container>
+            <Row>
         {dogs.map(dogDto => {
             return (
-                <Col>
-                <Card key={dogDto.id}>
-                    <Card.Title>{dogDto.name}</Card.Title>
+                <Card key={dogDto.id} style={{ width: '14rem' , margin: '20px'}}>
+                    <Card.Title><h4>{dogDto.name}</h4></Card.Title>
                     <Card.Body>
+                        <h6>Rasse:</h6>
                         {dogDto.breed}
+                        <br/>
                         {dogDto.owner}
+                        <br/>
                         {dogDto.food}
+                        <br/>
                         {dogDto.dogschool}
                     </Card.Body>
                     <Card.Footer>
                         {dogDto.id}
                     </Card.Footer>
                 </Card>
-                </Col>
+
             )
         })}
+            </Row>
+        </Container>
         </tbody>
     )
 }
@@ -65,7 +72,7 @@ function NewDogTFoot({onUpdate}) {
                               onChange={e => setNewOwner(e.target.value)}/>
             </td>
             <td>
-                <Form.Label className="visually-hidden" htmlFor="inputDogFood">Futter</Form.Label>
+                <Form.Label className="visually-hidden" htmlFor="inputDogFood">Breed</Form.Label>
                 <Form.Control id="inputDogFood" placeholder="Meat" value={newFood}
                               onChange={e => setNewFood(e.target.value)}/>
             </td>
@@ -104,7 +111,7 @@ function App() {
                 <Container>
                     <Navbar.Brand>
                         <Image src={logo} alt="" width={60} height={60}/>{' '}
-                        Hunde Schule
+                        Hunde Schule, yolo dude whats poppin? this is our cool puppy school. Come jump in if you want dude! ;) 
                     </Navbar.Brand>
                     <Navbar.Text>
                         <a href="http://localhost:8080/api/swagger-ui/index.html">API {">>"}</a>
