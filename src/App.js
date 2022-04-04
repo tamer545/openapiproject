@@ -1,8 +1,7 @@
-import {Button, Card, Col, Container, Form, Image, Navbar, Row, Table} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, Image, ListGroup, ListGroupItem, Navbar, Row, Table} from "react-bootstrap";
 import logo from './logo.jpg'
 import {useEffect, useState} from "react";
 import {addDog, getDogs} from "./Api";
-
 function DogTBody({versionId}) {
     const [dogs, setDogs] = useState([])
     useEffect(() => {
@@ -14,36 +13,30 @@ function DogTBody({versionId}) {
         <tbody>
         <Container>
             <Row>
-        {dogs.map(dogDto => {
-            return (
-                <Card key={dogDto.id} style={{background: "#876942", width: '14rem' , margin: '20px'}}>
-                    <Card.Title><h4>{dogDto.name}</h4></Card.Title>
-                    <Card.Body>
-                        <h6>Rasse:</h6>
-                        {dogDto.breed}
-                        <br/>
-                        <h6>Besitzer:</h6>
-                        {dogDto.owner}
-                        <br/>
-                        <h6>Hauptnahrung:</h6>
-                        {dogDto.food}
-                        <br/>
-                        <h6>Schule:</h6>
-                        {dogDto.dogschool}
-                    </Card.Body>
-                    <Card.Footer>
-                        {dogDto.id}
-                    </Card.Footer>
-                </Card>
-
-            )
-        })}
+                {dogs.map(dogDto => {
+                    return (
+                        <Card style={{ width: '18rem' }} key={dogDto.id}>
+                            <Card.Body>
+                                <Card.Title><h4>{dogDto.name}</h4></Card.Title>
+                                <Card.Text>
+                                    {dogDto.name } hat die Rasse {dogDto.breed}. Er isst gerne {dogDto.food} und geht in die Schule {dogDto.dogschool}. {dogDto.name} gehört {dogDto.owner}.
+                                </Card.Text>
+                            </Card.Body>
+                            <ListGroup className="list-group-flush">
+                                <ListGroupItem><b>Rasse: </b>{dogDto.breed}</ListGroupItem>
+                                <ListGroupItem><b>Besitzer: </b>{dogDto.owner}</ListGroupItem>
+                                <ListGroupItem><b>Hauptnahrung: </b>{dogDto.food}</ListGroupItem>
+                                <ListGroupItem><b>Schule: </b>{dogDto.dogschool}</ListGroupItem>
+                            </ListGroup>
+                        </Card>
+                    )
+                })}
             </Row>
         </Container>
+
         </tbody>
     )
 }
-
 function NewDogTFoot({onUpdate}) {
     const [newName, setNewName] = useState("")
     const [newBreed, setNewBreed] = useState("")
@@ -85,7 +78,7 @@ function NewDogTFoot({onUpdate}) {
                               onChange={e => setNewDogSchool(e.target.value)}/>
             </td>
             <td>
-                <Button type="submit" variant="secondary" onClick={handleAddDog}>Add Dog</Button>
+                <Button type="submit" variant="secondary" onClick={handleAddDog} style={{ height: "40px" }}>Add Dog</Button>
             </td>
         </tr>
         </tfoot>
@@ -101,12 +94,11 @@ function DogTable() {
         <>
             <NewDogTFoot onUpdate={onUpdate}/>
             <Row>
-            <DogTBody versionId={id}/>
+                <DogTBody versionId={id}/>
             </Row>
         </>
     )
 }
-
 function App() {
     return (
         <>
@@ -114,7 +106,7 @@ function App() {
                 <Container>
                     <Navbar.Brand>
                         <Image src={logo} alt="" width={60} height={60}/>{' '}
-                        Hunde Schule, yolo dude whats poppin? this is our cool puppy school. Come jump in if you want dude! ;) 
+                        Hunde Schule, yolo dude whats poppin? this is our cool puppy school. Come jump in if you want dude! ;)
                     </Navbar.Brand>
                     <Navbar.Text>
                         <a href="http://localhost:8080/api/swagger-ui/index.html">API {">>"}</a>
@@ -127,5 +119,4 @@ function App() {
         </>
     );
 }
-
 export default App;
