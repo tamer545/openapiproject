@@ -72,7 +72,7 @@ components:
         - name
         - breed
         - food
-        - dogschool
+        - age
       properties:
         id:
           type: integer
@@ -93,10 +93,10 @@ components:
           type: string
           minLength: 1
           example: t-bone Steak
-        dogschool:
-          type: string
+        age:
+          type: integer
           minLength: 1
-          example: Dogschool Zurich
+          example: 7
     OwnerDTO:
       required:
         - name
@@ -115,4 +115,27 @@ components:
           type: number
           minLength: 1
           example: 18
+    FoodDTO:
+      required:
+        - type
+        - mainIngredients
+        - protein
+      properties:
+        id:
+          type: integer
+          example: 42
+          minimum: 0
+          readOnly: true
+        type:
+          type: string
+          minLength: 1
+          example: meat
+        mainIngredients:
+          type: string
+          minLength: 1
+          example: chicken
+        protein:
+          type: string
+          minLength: 1
+          example: eiweiss
 

@@ -29,7 +29,7 @@ public class DogController implements DogsApi {
 
     @PostConstruct
     public void someInitialDogs() {
-        addDog(new DogDTO().breed("Golden Retriever").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")));
+        addDog(new DogDTO().breed("Golden Retriever").name("Goldi").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")));
         addDog(new DogDTO().name("Tobi").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")));
         addDog(new DogDTO().name("Kira").breed("Bernersenn").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")));
     }
