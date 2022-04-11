@@ -43,13 +43,34 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/DogDTO"
+  /dogs/{dogId}:
+    patch:
+      summary: change owner of doggo
+      operationId: changeDogOwner
+      parameters:
+        - name: dogId
+          in: path
+          description: ID to change owner of dog
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OwnerDTO"
+
+      responses:
+        204:
+          description: owner succesfully changed
 components:
   schemas:
     DogDTO:
       required:
         - name
         - breed
-        - owner
         - food
         - dogschool
       properties:
@@ -67,9 +88,7 @@ components:
           minLength: 1
           example: Golden Retriever
         owner:
-          type: string
-          minLength: 1
-          example: Kristoffer Jonas Klauß
+          $ref: "#/components/schemas/OwnerDTO"
         food:
           type: string
           minLength: 1
@@ -78,4 +97,22 @@ components:
           type: string
           minLength: 1
           example: Dogschool Zurich
+    OwnerDTO:
+      required:
+        - name
+        - age
+      properties:
+        id:
+          type: integer
+          example: 42
+          minimum: 0
+          readOnly: true
+        name:
+          type: string
+          minLength: 1
+          example: Kira
+        age:
+          type: number
+          minLength: 1
+          example: 18
 
