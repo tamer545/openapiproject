@@ -21,7 +21,7 @@ function DogTBody({versionId}) {
                             <Card.Body>
                                 <Card.Title><h4>{dogDto.name}</h4></Card.Title>
                                 <Card.Text>
-                                    {dogDto.name} hat die Rasse {dogDto.breed}. Er isst gerne {dogDto.food} und ist
+                                    {dogDto.name} hat die Rasse {dogDto.breed}. Er isst gerne {dogDto.food.type} und ist
                                     {dogDto.age} Jahre alt. {dogDto.name} gehört {dogDto.owner.name}.
                                 </Card.Text>
                             </Card.Body>
@@ -29,8 +29,8 @@ function DogTBody({versionId}) {
                                 <ListGroupItem><b>ID: </b>{dogDto.id}</ListGroupItem>
                                 <ListGroupItem><b>Rasse: </b>{dogDto.breed}</ListGroupItem>
                                 <ListGroupItem><b>Besitzer: </b>{dogDto.owner.name}</ListGroupItem>
-                                <ListGroupItem><b>Hauptnahrung: </b>{dogDto.food}</ListGroupItem>
-                                <ListGroupItem><b>Schule: </b>{dogDto.dogschool}</ListGroupItem>
+                                <ListGroupItem><b>Hauptnahrung: </b>{dogDto.food.type}</ListGroupItem>
+                                <ListGroupItem><b>Alter: </b>{dogDto.age}</ListGroupItem>
                             </ListGroup>
                         </Card>
                     )
@@ -45,7 +45,9 @@ function DogTBody({versionId}) {
 function NewDogTFoot({onUpdate}) {
     const [newName, setNewName] = useState("")
     const [newBreed, setNewBreed] = useState("")
-    const [newFood, setNewFood] = useState("")
+    const [newFoodType, setNewFoodType] = useState("")
+    const [newFoodMainIngredients, setNewFoodMainIngredients] = useState("")
+    const [newFoodProtein, setNewFoodProtein] = useState("")
     const [newDogAge, setNewDogAge] = useState("")
     const [newOwnerName, setNewOwnerName] = useState("")
     const [newOwnerAge, setNewOwnerAge] = useState('')
@@ -54,7 +56,11 @@ function NewDogTFoot({onUpdate}) {
     const [dogToChangeOwnerId, setDogToChangeOwnerId] = useState("")
     const handleAddDog = event => {
         event.preventDefault();
-        addDog(newName, newBreed, {name: newOwnerName, age: parseInt(newOwnerAge)}, newFood, parseInt(newDogAge))
+        addDog(newName, newBreed, {name: newOwnerName, age: parseInt(newOwnerAge)}, {
+            type: newFoodType,
+            mainIngredients: newFoodMainIngredients,
+            protein: newFoodProtein
+        }, parseInt(newDogAge))
             .then(() => onUpdate())
             .catch(error => console.error(error));
     }
@@ -77,10 +83,6 @@ function NewDogTFoot({onUpdate}) {
                                                    htmlFor="inputDogBreed">Breed</Form.Label>
                             <Form.Control id="inputDogBreed" placeholder="Breed" value={newBreed}
                                           onChange={e => setNewBreed(e.target.value)}/></ListGroupItem>
-                        <ListGroupItem><Form.Label className="visually-hidden" htmlFor="inputDogFood">Breed</Form.Label>
-                            <Form.Control id="inputDogFood" placeholder="Food" value={newFood}
-                                          onChange={e => setNewFood(e.target.value)}/>
-                        </ListGroupItem>
                         <ListGroupItem><Form.Label className="visually-hidden"
                                                    htmlFor="inputDogSchool">Alter</Form.Label>
                             <Form.Control id="inputDogSchool" placeholder="Alter" value={newDogAge}
@@ -95,6 +97,23 @@ function NewDogTFoot({onUpdate}) {
                                                    htmlFor="inputDogOwner">Owner</Form.Label>
                             <Form.Control id="inputDogOwner" placeholder="Alter" value={newOwnerAge}
                                           onChange={e => setNewOwnerAge(e.target.value)}/></ListGroupItem>
+                        <br/>
+                        <p>Food</p>
+                        <ListGroupItem><Form.Label className="visually-hidden" htmlFor="inputDogFood">Art</Form.Label>
+                            <Form.Control id="inputDogFood" placeholder="Food" value={newFoodType}
+                                          onChange={e => setNewFoodType(e.target.value)}/>
+                        </ListGroupItem>
+                        <ListGroupItem><Form.Label className="visually-hidden" htmlFor="inputDogFood">Main
+                            Ingredients</Form.Label>
+                            <Form.Control id="inputDogFood" placeholder="Main Ingredients"
+                                          value={newFoodMainIngredients}
+                                          onChange={e => setNewFoodMainIngredients(e.target.value)}/>
+                        </ListGroupItem>
+                        <ListGroupItem><Form.Label className="visually-hidden"
+                                                   htmlFor="inputDogFood">Protein</Form.Label>
+                            <Form.Control id="inputDogFood" placeholder="Protein" value={newFoodProtein}
+                                          onChange={e => setNewFoodProtein(e.target.value)}/>
+                        </ListGroupItem>
                     </ListGroup>
                 </Card.Body>
                 <Button type="submit" variant="secondary" onClick={handleAddDog} style={{height: "40px"}}>Add

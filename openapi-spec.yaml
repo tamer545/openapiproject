@@ -90,9 +90,7 @@ components:
         owner:
           $ref: "#/components/schemas/OwnerDTO"
         food:
-          type: string
-          minLength: 1
-          example: t-bone Steak
+          $ref: "#/components/schemas/FoodDTO"
         age:
           type: integer
           minLength: 1

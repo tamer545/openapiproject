@@ -1,6 +1,6 @@
 // Note: we work mainly with JavaScript.
 // However, at least this file is in Typescript to illustrate the point of the typesafe APIs.
-import {DefaultApi, DogDTO, OwnerDTO} from "./generated/openapi";
+import {DefaultApi, DogDTO, FoodDTO, OwnerDTO} from "./generated/openapi";
 
 const api = new DefaultApi();
 
@@ -8,7 +8,7 @@ export function getDogs(): Promise<Array<DogDTO>> {
     return api.getDogs()
 }
 
-export function addDog(name: string, breed: string, owner: OwnerDTO, food: string, age: number): Promise<DogDTO> {
+export function addDog(name: string, breed: string, owner: OwnerDTO, food: FoodDTO, age: number): Promise<DogDTO> {
     return api.addDog({
         dogDTO: {
             name: name,
