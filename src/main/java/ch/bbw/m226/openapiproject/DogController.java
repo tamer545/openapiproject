@@ -30,8 +30,8 @@ public class DogController implements DogsApi {
 
     @PostConstruct
     public void someInitialDogs() {
-        addDog(new DogDTO().breed("Golden Retriever").name("Goldi").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")).food(new FoodDTO().type("Chicken").mainIngredients("Chicken, Spice").protein("Fat")));
-        addDog(new DogDTO().name("Tobi").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")).food(new FoodDTO().type("Chicken").mainIngredients("Chicken, Spice").protein("Fat")));
+        addDog(new DogDTO().name("Goldi").breed("Golden Retriever").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Owner")).food(new FoodDTO().type("Chicken").mainIngredients("Chicken, Spice").protein("Fat")));
+        addDog(new DogDTO().name("Oahhh Timo").breed("Wiener").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")).food(new FoodDTO().type("Chicken").mainIngredients("Chicken, Spice").protein("Fat")));
         addDog(new DogDTO().name("Kira").breed("Bernersenn").owner(new OwnerDTO().age(BigDecimal.valueOf(13)).name("Kai se Owner")).food(new FoodDTO().type("Chicken").mainIngredients("Chicken, Spice").protein("Fat")));
     }
 
