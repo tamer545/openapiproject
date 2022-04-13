@@ -32,15 +32,19 @@ function DogTBody({versionId}) {
                             <Card.Body>
                                 <Card.Title><h4>{dogDto.name}</h4></Card.Title>
                                 <Card.Text>
-                                    {dogDto.name} hat die Rasse {dogDto.breed}. Er isst gerne {dogDto.food.type} und ist
-                                    {dogDto.age} Jahre alt. {dogDto.name} gehört {dogDto.owner.name}.
+                                    {dogDto.name} hat die Rasse {dogDto.breed}. Er isst gerne {dogDto.food.type} und
+                                    ist {dogDto.age} Jahre alt. {dogDto.name} gehört {dogDto.owner.name}.
                                 </Card.Text>
                             </Card.Body>
                             <ListGroup className="list-group-flush">
                                 <ListGroupItem><b>ID: </b>{dogDto.id}</ListGroupItem>
                                 <ListGroupItem><b>Rasse: </b>{dogDto.breed}</ListGroupItem>
-                                <ListGroupItem><b>Besitzer: </b>{dogDto.owner.name}</ListGroupItem>
+                                <Tooltip title={"Age: " + dogDto.owner.age}>
+                                    <ListGroupItem><b>Besitzer: </b>{dogDto.owner.name}</ListGroupItem>
+                                </Tooltip>
+                                <Tooltip title={"Main Ingredients: " + dogDto.food.mainIngredients + "  |   Proteins: " + dogDto.food.protein}>
                                 <ListGroupItem><b>Hauptnahrung: </b>{dogDto.food.type}</ListGroupItem>
+                                </Tooltip>
                                 <ListGroupItem><b>Alter: </b>{dogDto.age}</ListGroupItem>
                             </ListGroup>
                         </Card>
@@ -178,10 +182,11 @@ function App() {
             <Navbar bg="light">
                 <Container>
                     <Navbar.Brand>
-                        <Image src={logo} alt="" width={60} height={60}/>{' '}
-                        Hunde Schule, yolo dude whats poppin? this is our cool puppy school. Come jump in if you want
-                        dude! ;)
+                        <Image src={logo} alt="" width={60} height={60}/>
                     </Navbar.Brand>
+                    <Navbar.Text>
+                        <h3>Our Dog School</h3>
+                    </Navbar.Text>
                     <Navbar.Text>
                         <a href="http://localhost:8080/api/swagger-ui/index.html">API {">>"}</a>
                     </Navbar.Text>

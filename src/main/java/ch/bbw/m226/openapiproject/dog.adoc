@@ -55,12 +55,13 @@ Diese Api ist basiert auf einer Hundeschule. Man kann seinen Hund hinzugfügen
 mit seinem Owner aber den auch ändern.
 
 == Wireframe
-image::test.jpg[test,580,420]
+image::Wireframe.png[wireframe,580,420]
 
 Man sieht auf dem Wireframe das man oben einen neuen Hund hinzugfügen kann.
 Dafür werden verschiedene Input-Felder bereitgestellt um das Objekt abzufüllen.
 Daneben kommt noch eine Card damit man den Owner des Hundes wechseln kann.
 Unter dem befinden sich die momentanen hinzugefügten Hunde auf Cards mit ihren Daten.
+Ein kleines Feature welches man nicht direkt bemerkt ist, beim hovern über Owner oder Hauptnahrung werden weitere Infos dazu aufgelistet.
 
 == 4. Fazit
-Wir finden dass uns eine gute API gelungen ist. Wir hätten die einen Sachen schon von Anfang an richtig machen können den wir hatten gegen den Schluss viele Probleme. Trotzdem haben wir gute Objekte erstellt und gut zusammengehängt.
+Wir finden dass uns eine gute API gelungen ist. Wenn wir die einen Sachen schon von Anfang an richtig gemacht hätten, hättten wir gegen den Schluss wahrscheinlich weniger Probleme gehabt und es würde noch besser aussehen, aber wir sind beide zufrieden mit dem Ergebnis. Wir haben gute Objekte erstellt und ein gutes Frontend gemacht.
